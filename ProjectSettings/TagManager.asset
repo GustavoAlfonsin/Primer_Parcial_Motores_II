@@ -8,6 +8,7 @@ TagManager:
   - Water
   - Target
   - Trampoline
+  - Pared
   layers:
   - Default
   - TransparentFX

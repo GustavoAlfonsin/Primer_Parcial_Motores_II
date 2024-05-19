@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         {
             if (actualPlayer <= 0)
             {
-                actualPlayer = 6;
+                actualPlayer = 7;
                 SetConstraits();
             }
             else
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (actualPlayer >= 6)
+            if (actualPlayer >= 7)
             {
                 actualPlayer = 0;
                 SetConstraits();

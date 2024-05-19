@@ -15,31 +15,33 @@ public class Controller_Player : MonoBehaviour
 
     private BoxCollider col;
 
-    public LayerMask floor;
+    public LayerMask floor; // la capa donde dectecta el Ray
 
     internal RaycastHit leftHit,rightHit,downHit;
 
     public float distanceRay,downDistanceRay;
 
-    private bool canMoveLeft, canMoveRight,canJump;
+    internal bool canMoveLeft, canMoveRight,canJump;
     internal bool onFloor;
 
-    private void Start()
+    public virtual void Start()
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<BoxCollider>();
+        // Freza la posición del personaje cuando este no este activo
         rb.constraints = RigidbodyConstraints.FreezePositionX| RigidbodyConstraints.FreezePositionZ|RigidbodyConstraints.FreezeRotation;
     }
 
     public virtual void FixedUpdate()
     {
+        // Solo se puede mover si es el jugador activo
         if (GameManager.actualPlayer == playerNumber)
         {
             Movement();
         }
     }
 
-    private void Update()
+    public virtual void Update()
     {
         if (GameManager.actualPlayer == playerNumber)
         {
@@ -73,13 +75,13 @@ public class Controller_Player : MonoBehaviour
         }
         else
         {
-            if (onFloor)
+            if (onFloor) // Si no es un personaje activo y esta en el piso freza la posición
             {
                 rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
             }
             else
             {
-                if (IsOnSomething())
+                if (IsOnSomething()) // si esta sobre otro personaje freza la posición en Z
                 {
                     if (downHit.collider.gameObject.CompareTag("Player"))
                     {
@@ -112,7 +114,7 @@ public class Controller_Player : MonoBehaviour
         return Physics.Raycast(landingRay, out leftHit, transform.localScale.x/1.8f);
     }
 
-    private void Movement()
+    internal virtual void Movement()
     {
         if (Input.GetKey(KeyCode.A) && canMoveLeft)
         {
@@ -136,8 +138,10 @@ public class Controller_Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
+            Debug.Log("Se apreto W");
             if (canJump)
             {
+                Debug.Log("Salto");
                 rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
             }
         }
@@ -157,7 +161,7 @@ public class Controller_Player : MonoBehaviour
 
     }
 
-    private void OnCollisionExit(Collision collision)
+    public virtual void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Floor"))
         {
