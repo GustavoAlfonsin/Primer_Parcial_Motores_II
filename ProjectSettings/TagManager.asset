@@ -10,6 +10,7 @@ TagManager:
   - Trampoline
   - Pared
   - Puerta
+  - Plataforma
   layers:
   - Default
   - TransparentFX
