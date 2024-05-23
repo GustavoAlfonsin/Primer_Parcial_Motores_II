@@ -7,8 +7,12 @@ public class Controller_Player_Escalador : Controller_Player
     private bool enContactoConLaPared = false;
     private bool deslizandose = false;
     public float velocidadDeslizamiento;
-    private bool contactoParedIzq = false;
-    private bool contanctoParedDer = false;
+
+    public float fuerzaSaltoParedX;
+    public float fuerzaSaltoParedY;
+    public float tiempoSaltoPared;
+
+    private bool saltandoDePared;
     // Start is called before the first frame update
     public override void Start()
     {
@@ -57,7 +61,7 @@ public class Controller_Player_Escalador : Controller_Player
                 canMoveRight = true;
             }
 
-            if (IsOnSomething())
+            if (IsOnSomething() || enContactoConLaPared)
             {
                 canJump = true;
             }
@@ -100,16 +104,7 @@ public class Controller_Player_Escalador : Controller_Player
         if (collision.gameObject.CompareTag("Pared"))
         {
             enContactoConLaPared = true;
-            if (SomethingLeft())
-            {
-                contactoParedIzq = true;
-                canMoveLeft = false;
-            }
-            else if (SomethingRight())
-            {
-                contanctoParedDer = true;
-                canMoveRight = false;
-            }
+         
         }
     }
 
@@ -118,29 +113,49 @@ public class Controller_Player_Escalador : Controller_Player
         if (collision.gameObject.CompareTag("Pared"))
         {
             enContactoConLaPared = false;
-            contactoParedIzq = false;
-            contanctoParedDer = false;
         }
         base.OnCollisionExit(collision);
     }
-    //internal override void Movement()
-    //{
-    //    if (Input.GetKey(KeyCode.A) && canMoveLeft)
-    //    {
-    //        rb.velocity = new Vector3(1 * -speed, rb.velocity.y, 0);
-    //    }
-    //    else if (Input.GetKey(KeyCode.D) && canMoveRight)
-    //    {
-    //        rb.velocity = new Vector3(1 * speed, rb.velocity.y, 0);
-    //    }
-    //    else
-    //    {
-    //        rb.velocity = new Vector3(0, rb.velocity.y, 0);
-    //    }
-    //}
 
     public override void Jump()
     {
-        base.Jump();
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Debug.Log("Se apreto W");
+            if (canJump)
+            {
+                if (enContactoConLaPared && deslizandose)
+                {
+                    saltoPared();
+                }
+                else
+                {
+                    rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+                }
+                Debug.Log("Salto");
+            }
+        }
+    }
+
+    private void saltoPared() {
+        if (Input.GetKeyDown(KeyCode.A) && canMoveLeft)
+        {
+            rb.AddForce(new Vector3(1 * -fuerzaSaltoParedX, fuerzaSaltoParedY, 0), ForceMode.Impulse);
+        }else if (Input.GetKey(KeyCode.D) && canMoveRight)
+        {
+            rb.AddForce(new Vector3(1 * fuerzaSaltoParedX, fuerzaSaltoParedY, 0), ForceMode.Impulse);
+        }
+        else
+        {
+            rb.AddForce(new Vector3(0,fuerzaSaltoParedY,0), ForceMode.Impulse);
+        }
+        StartCoroutine(CambioSaltoPared());
+    }
+
+    IEnumerator CambioSaltoPared()
+    {
+        saltandoDePared = true;
+        yield return new WaitForSeconds(tiempoSaltoPared);
+        saltandoDePared = false;
     }
 }
