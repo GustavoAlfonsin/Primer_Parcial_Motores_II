@@ -1307,7 +1307,7 @@ GameObject:
   - component: {fileID: 784426556}
   m_Layer: 9
   m_Name: zonaDeTiro
-  m_TagString: Untagged
+  m_TagString: ZonaRoja
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1360,7 +1360,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142cfbb06f40ea341825f44d9de16bb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSecano: {fileID: 0}
   JugadorEnZona: 0
 --- !u!1 &833437149
 GameObject:
@@ -2710,6 +2709,7 @@ MonoBehaviour:
   shootCoolDown: 0
   bala: {fileID: 6818453506393473998, guid: d5cd8c03be9849741a94be32fed5ad74, type: 3}
   salidaDisparo: {fileID: 216263197}
+  radioZona: 6
   AreaDisparo: {fileID: 784426553}
 --- !u!1 &1485302898
 GameObject:

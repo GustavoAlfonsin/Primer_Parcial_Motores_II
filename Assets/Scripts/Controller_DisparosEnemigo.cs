@@ -14,8 +14,11 @@ public class Controller_DisparosEnemigo : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        player = GetComponent<Controller_zonaDeTiro>().playerSecano.gameObject;
-        direction = -(this.transform.position - player.transform.position).normalized;
+        if (Controller_zonaDeTiro.playerSercano.gameObject != null)
+        {
+            player = Controller_zonaDeTiro.playerSercano.gameObject;
+            direction = -(this.transform.position - player.transform.position).normalized;
+        }
     }
 
     // Update is called once per frame

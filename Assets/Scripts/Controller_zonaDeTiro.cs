@@ -5,7 +5,7 @@ using UnityEngine;
 public class Controller_zonaDeTiro : MonoBehaviour
 {
     private GameObject rb;
-    public GameObject playerSecano;
+    public static GameObject playerSercano;
     public bool JugadorEnZona;
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,7 @@ public class Controller_zonaDeTiro : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             JugadorEnZona = true;
-            playerSecano = other.gameObject;
+            playerSercano = other.gameObject;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -27,7 +27,7 @@ public class Controller_zonaDeTiro : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             JugadorEnZona = false;
-            playerSecano = null;
+            playerSercano = null;
         }
     }
 }

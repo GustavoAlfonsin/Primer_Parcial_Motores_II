@@ -130,14 +130,14 @@ public class Controller_Player : MonoBehaviour
     {
         Ray landingRay = new Ray(new Vector3(transform.position.x, transform.position.y - (transform.localScale.y / 2.2f), transform.position.z), Vector3.right);
         Debug.DrawRay(landingRay.origin, landingRay.direction, Color.green);
-        return Physics.Raycast(landingRay, out rightHit, transform.localScale.x / 1.8f);
+        return Physics.Raycast(landingRay, out rightHit, transform.localScale.x / 1.8f) && !rightHit.collider.CompareTag("ZonaRoja");
     }
 
     public virtual bool SomethingLeft()
     {
         Ray landingRay = new Ray(new Vector3(transform.position.x, transform.position.y - (transform.localScale.y / 2.2f), transform.position.z), Vector3.left);
         Debug.DrawRay(landingRay.origin, landingRay.direction, Color.green);
-        return Physics.Raycast(landingRay, out leftHit, transform.localScale.x / 1.8f);
+        return Physics.Raycast(landingRay, out leftHit, transform.localScale.x / 1.8f) && !rightHit.collider.CompareTag("ZonaRoja");
     }
 
     internal virtual void Movement()
