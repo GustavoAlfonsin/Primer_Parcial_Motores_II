@@ -4,21 +4,20 @@ using Unity.IO.LowLevel.Unsafe;
 using Unity.Loading;
 using UnityEngine;
 
-public class Controller_Plataformas : MonoBehaviour
+public class Controller_Plataformas : Controller_Obstaculos
 {
     public GameObject[] waypoints;
     public float speed = 2;
     private int waypointActual = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
-        moverPlataforma();
+        if (obstaculoActivado)
+        {
+            moverPlataforma();
+        }
+        base.Update();
     }
 
     void moverPlataforma()
@@ -33,21 +32,5 @@ public class Controller_Plataformas : MonoBehaviour
         }
 
         transform.position = Vector3.MoveTowards(transform.position, waypoints[waypointActual].transform.position,speed * Time.deltaTime );
-    }
-
-    public virtual void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.transform.SetParent(this.transform);
-        }
-    }
-
-    public virtual void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.transform.SetParent(null);
-        }
     }
 }

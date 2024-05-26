@@ -10,6 +10,12 @@ public class Controller_Player_Floating : Controller_Player
         {
             onFloor = true;
         }
+
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+            Destroy(this.gameObject);
+            GameManager.gameOver = true;
+        }
         //This makes the player invulnerable to water.
     }
 }

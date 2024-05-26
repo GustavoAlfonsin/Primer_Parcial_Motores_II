@@ -18,7 +18,14 @@ public class Controller_Obstaculos : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        obstaculoActivado = bton.GetComponent<Controller_Buttons>().activado;
+        if(bton.gameObject != null)
+        {
+            obstaculoActivado = bton.GetComponent<Controller_Buttons>().activado;
+        }else
+        {
+            obstaculoActivado = true;
+        }
+        
     }
 
     

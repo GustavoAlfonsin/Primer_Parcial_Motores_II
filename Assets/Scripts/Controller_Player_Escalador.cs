@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Controller_Player_Escalador : Controller_Player
 {
+    [Header("Salto Pared")]
     private bool enContactoConLaPared = false;
     private bool deslizandose = false;
     public float velocidadDeslizamiento;
@@ -27,9 +28,9 @@ public class Controller_Player_Escalador : Controller_Player
     {
         if (GameManager.actualPlayer == playerNumber)
         {
-            if (deslizandose)
+            if (deslizandose && !IsOnSomething())
             {
-                rb.velocity = new Vector3(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -velocidadDeslizamiento, float.MaxValue), rb.velocity.z);
+                rb.velocity = new Vector3(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -velocidadDeslizamiento, float.MaxValue), 0);
             }
             else
             {
@@ -98,13 +99,12 @@ public class Controller_Player_Escalador : Controller_Player
             }
         }
     }
-
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Pared"))
         {
             enContactoConLaPared = true;
-         
+
         }
     }
 
@@ -121,10 +121,9 @@ public class Controller_Player_Escalador : Controller_Player
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            Debug.Log("Se apreto W");
             if (canJump)
             {
-                if (enContactoConLaPared && deslizandose)
+                if (enContactoConLaPared && deslizandose && !saltandoDePared)
                 {
                     saltoPared();
                 }
@@ -132,22 +131,17 @@ public class Controller_Player_Escalador : Controller_Player
                 {
                     rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
                 }
-                Debug.Log("Salto");
             }
         }
     }
 
     private void saltoPared() {
-        if (Input.GetKeyDown(KeyCode.A) && canMoveLeft)
+        if (SomethingRight())
         {
             rb.AddForce(new Vector3(1 * -fuerzaSaltoParedX, fuerzaSaltoParedY, 0), ForceMode.Impulse);
-        }else if (Input.GetKey(KeyCode.D) && canMoveRight)
+        }else if (SomethingLeft())
         {
             rb.AddForce(new Vector3(1 * fuerzaSaltoParedX, fuerzaSaltoParedY, 0), ForceMode.Impulse);
-        }
-        else
-        {
-            rb.AddForce(new Vector3(0,fuerzaSaltoParedY,0), ForceMode.Impulse);
         }
         StartCoroutine(CambioSaltoPared());
     }
