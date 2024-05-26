@@ -8,9 +8,6 @@ public class Controller_Disparador : MonoBehaviour
     public GameObject bala;
     public GameObject salidaDisparo;
     
-    private RaycastHit hit;
-    public float radioZona;
-
     public GameObject AreaDisparo;
     // Start is called before the first frame update
     void Start()
