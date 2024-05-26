@@ -36,7 +36,6 @@ public class Controller_Player_Escalador : Controller_Player
             {
                 Movement();
             }
-            
         }
     }
 
@@ -45,7 +44,7 @@ public class Controller_Player_Escalador : Controller_Player
         if (GameManager.actualPlayer == playerNumber)
         {
             Jump();
-            if (SomethingLeft())
+            if (SomethingLeft() && !leftHit.collider.CompareTag("Pared"))
             {
                 canMoveLeft = false;
             }
@@ -53,7 +52,7 @@ public class Controller_Player_Escalador : Controller_Player
             {
                 canMoveLeft = true;
             }
-            if (SomethingRight())
+            if (SomethingRight() && !rightHit.collider.CompareTag("Pared"))
             {
                 canMoveRight = false;
             }
@@ -152,4 +151,5 @@ public class Controller_Player_Escalador : Controller_Player
         yield return new WaitForSeconds(tiempoSaltoPared);
         saltandoDePared = false;
     }
+
 }
