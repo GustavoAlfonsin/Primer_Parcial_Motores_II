@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Controller_Player_Escalador : Controller_Player
 {
+    // La idea es hacer un nuevo personaje que puede estar en la pared para que salte y pueda subir por ellas
     [Header("Salto Pared")]
     private bool enContactoConLaPared = false;
     private bool deslizandose = false;

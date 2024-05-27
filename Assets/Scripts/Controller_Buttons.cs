@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Controller_Buttons : MonoBehaviour
 {
+    // Son botones que estan "conectados" a distintos objetos en el mapa que activan o desactivan su funcionamiento
     public Material colorActivado;
     public Material colorDesactivado;
 

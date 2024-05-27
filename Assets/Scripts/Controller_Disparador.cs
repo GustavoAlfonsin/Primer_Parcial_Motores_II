@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Controller_Disparador : MonoBehaviour
 {
+    // Se trata de un objeto que cuando tiene a alguno de los jugadores serca le dispare
     public float shootCoolDown;
     public GameObject bala;
     public GameObject salidaDisparo;

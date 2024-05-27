@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Controller_paredes : Controller_Obstaculos
 {
+    // Paredes que cambian de posicion al altivar un boton que le sirven al jugador para progresar en el nivel
     public Vector3 posicionInc;
     public GameObject posicionFin;
 

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Controller_Plataformas : Controller_Obstaculos
 {
+    // Son plataformas moviles que pueden ser de ayuda para el jugador o obstaculos 
     public GameObject[] waypoints;
     public float speed = 2;
     private int waypointActual = 0;
