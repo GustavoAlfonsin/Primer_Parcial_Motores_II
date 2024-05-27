@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
                 //Debug.Log(i.ToString());
             }
         }
-        if (i >= 7)
+        if (i >= 6)
         {
             winCondition = true;
         }
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         {
             if (actualPlayer <= 0)
             {
-                actualPlayer = 7;
+                actualPlayer = 6;
                 SetConstraits();
             }
             else
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (actualPlayer >= 7)
+            if (actualPlayer >= 6)
             {
                 actualPlayer = 0;
                 SetConstraits();
