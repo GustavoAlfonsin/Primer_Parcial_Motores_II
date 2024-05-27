@@ -274,7 +274,7 @@ MonoBehaviour:
     m_Bits: 512
   distanceRay: 0
   downDistanceRay: 1
-  trampolineForce: 4
+  trampolineForce: 1.5
 --- !u!1 &110331646
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +304,7 @@ Transform:
   m_GameObject: {fileID: 110331646}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.27999878, y: 17.58, z: 0}
+  m_LocalPosition: {x: -0.69, y: 17.95, z: 0}
   m_LocalScale: {x: 0.6, y: 0.9, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4655,6 +4655,7 @@ MonoBehaviour:
   - {fileID: 404810532}
   - {fileID: 833437151}
   - {fileID: 110331648}
+  - {fileID: 1055921283}
   players:
   - {fileID: 1336929975}
   - {fileID: 441990912}
@@ -5083,12 +5084,12 @@ PrefabInstance:
     - target: {fileID: 660359024085417073, guid: e106a8ab09f51cf4dae2fa3ad661a50c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.7
+      value: -56.7
       objectReference: {fileID: 0}
     - target: {fileID: 660359024085417073, guid: e106a8ab09f51cf4dae2fa3ad661a50c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.9
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 660359024085417073, guid: e106a8ab09f51cf4dae2fa3ad661a50c,
         type: 3}
@@ -5721,12 +5722,12 @@ PrefabInstance:
     - target: {fileID: 2336017986282596386, guid: 01ed699e1dd7c9446ad7ddf8e5485707,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.4
+      value: -115.6
       objectReference: {fileID: 0}
     - target: {fileID: 2336017986282596386, guid: 01ed699e1dd7c9446ad7ddf8e5485707,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6
+      value: 40.1
       objectReference: {fileID: 0}
     - target: {fileID: 2336017986282596386, guid: 01ed699e1dd7c9446ad7ddf8e5485707,
         type: 3}
