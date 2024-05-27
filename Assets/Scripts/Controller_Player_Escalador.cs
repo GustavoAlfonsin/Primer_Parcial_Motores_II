@@ -70,7 +70,7 @@ public class Controller_Player_Escalador : Controller_Player
                 canJump = false;
             }
             Debug.Log($"{canJump}");
-            if (enContactoConLaPared && !onFloor)
+            if (enContactoConLaPared && !onFloor && !IsOnSomething())
             {
                 deslizandose = true;
             }

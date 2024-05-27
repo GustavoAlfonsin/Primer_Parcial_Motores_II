@@ -16,6 +16,7 @@ public class Restart : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             Time.timeScale = 1;
+            GameManager.actualPlayer = 0;
             SceneManager.LoadScene(0);
         }
     }

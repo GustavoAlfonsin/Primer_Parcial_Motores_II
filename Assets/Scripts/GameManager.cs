@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
 
     public static int actualPlayer = 0;
 
+    public static int playerInPosition = 0;
+
+    public static int totalPlayer;
+
     public List<Controller_Target> targets;
 
     public List<Controller_Player> players;
@@ -20,6 +24,7 @@ public class GameManager : MonoBehaviour
         Physics.gravity = new Vector3(0, -30, 0);
         gameOver = false;
         winCondition = false;
+        totalPlayer = players.Count;
         SetConstraits();
     }
 
@@ -41,6 +46,7 @@ public class GameManager : MonoBehaviour
                 //Debug.Log(i.ToString());
             }
         }
+        playerInPosition = i;
         if (i >= 6)
         {
             winCondition = true;
@@ -53,7 +59,7 @@ public class GameManager : MonoBehaviour
         {
             if (actualPlayer <= 0)
             {
-                actualPlayer = 6;
+                actualPlayer = 5;
                 SetConstraits();
             }
             else
@@ -64,7 +70,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (actualPlayer >= 6)
+            if (actualPlayer >= 5)
             {
                 actualPlayer = 0;
                 SetConstraits();

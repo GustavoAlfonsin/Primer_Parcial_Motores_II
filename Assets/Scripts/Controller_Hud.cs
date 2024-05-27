@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Controller_Hud : MonoBehaviour
 {
     public Text gameOverText;
+    public Text gameResult;
 
     void Start()
     {
@@ -26,5 +27,7 @@ public class Controller_Hud : MonoBehaviour
             gameOverText.text = "You Win";
             gameOverText.gameObject.SetActive(true);
         }
+
+        gameResult.text = $"Jugadores en Targets: {GameManager.playerInPosition} : {GameManager.totalPlayer} ";
     }
 }

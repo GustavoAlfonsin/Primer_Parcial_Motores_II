@@ -44,15 +44,16 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _densidad: 5
-    - _emision: 2
+    - _densidad: 15
+    - _emision: 1
     - _power: 5
-    - _velocidad: 5
+    - _velocidad: 15
     m_Colors:
-    - _Color1: {r: 0, g: 0.3744787, b: 0.7660377, a: 0}
+    - _Color1: {r: 0, g: 0.20510824, b: 0.5396226, a: 0}
     - _Color_base: {r: 0.9471698, g: 0.426129, b: 0, a: 0}
     - _Color_lineas: {r: 0.9169811, g: 0.8259832, b: 0.03287278, a: 0}
-    - _Tilling: {r: 10, g: 10, b: 0, a: 0}
+    - _Tilling: {r: 1, g: 1, b: 0, a: 0}
+    - _posicion: {r: 2, g: 0, b: 2, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8529593632828576676
 MonoBehaviour:
