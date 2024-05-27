@@ -9,6 +9,7 @@ public class Controller_Plataformas : Controller_Obstaculos
     public GameObject[] waypoints;
     public float speed = 2;
     private int waypointActual = 0;
+    public float velocidadRotacion = 0;
 
     // Update is called once per frame
     public override void Update()
@@ -16,6 +17,11 @@ public class Controller_Plataformas : Controller_Obstaculos
         if (obstaculoActivado)
         {
             moverPlataforma();
+        }
+
+        if (this.gameObject.CompareTag("Finish"))
+        {
+            transform.Rotate(0 , 0 , velocidadRotacion * Time.deltaTime);
         }
         base.Update();
     }
